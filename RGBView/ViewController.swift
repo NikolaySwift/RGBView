@@ -22,10 +22,36 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        colourView.layer.cornerRadius = 30
+        
+        setViewColour()
+        setLabelsValue()
     }
 
     @IBAction func slidersValueChanged() {
+        setViewColour()
+        setLabelsValue()
     }
     
+    private func setViewColour() {
+        colourView.backgroundColor = UIColor(
+            red: CGFloat(255 * redSlider.value),
+            green: CGFloat(255 * greenSlider.value),
+            blue: CGFloat(255 * blueSlider.value),
+            alpha: 1
+        )
+    }
+    
+    private func setLabelsValue() {
+        redLabel.text = redSlider.value.formatted(
+            .number.precision(.fractionLength(2))
+        )
+        greenLabel.text = greenSlider.value.formatted(
+            .number.precision(.fractionLength(2))
+        )
+        blueLabel.text = blueSlider.value.formatted(
+            .number.precision(.fractionLength(2))
+        )
+    }
 }
 
