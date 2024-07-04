@@ -35,9 +35,9 @@ final class ViewController: UIViewController {
     
     private func setViewColour() {
         colourView.backgroundColor = UIColor(
-            red: CGFloat(255 * redSlider.value),
-            green: CGFloat(255 * greenSlider.value),
-            blue: CGFloat(255 * blueSlider.value),
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
             alpha: 1
         )
     }
