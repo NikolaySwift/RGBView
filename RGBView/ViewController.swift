@@ -25,12 +25,22 @@ final class ViewController: UIViewController {
         colourView.layer.cornerRadius = 30
         
         setViewColour()
-        setLabelsValue()
+        setValue(redSlider.value, ForLabel: redLabel)
+        setValue(greenSlider.value, ForLabel: greenLabel)
+        setValue(blueSlider.value, ForLabel: blueLabel)
     }
-
-    @IBAction func slidersValueChanged() {
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
         setViewColour()
-        setLabelsValue()
+        
+        switch sender {
+        case redSlider:
+            setValue(redSlider.value, ForLabel: redLabel)
+        case greenSlider:
+            setValue(greenSlider.value, ForLabel: greenLabel)
+        default:
+            setValue(blueSlider.value, ForLabel: blueLabel)
+        }
     }
     
     private func setViewColour() {
@@ -42,14 +52,8 @@ final class ViewController: UIViewController {
         )
     }
     
-    private func setLabelsValue() {
-        redLabel.text = redSlider.value.formatted(
-            .number.precision(.fractionLength(2))
-        )
-        greenLabel.text = greenSlider.value.formatted(
-            .number.precision(.fractionLength(2))
-        )
-        blueLabel.text = blueSlider.value.formatted(
+    private func setValue(_ value: Float, ForLabel label: UILabel) {
+        label.text = value.formatted(
             .number.precision(.fractionLength(2))
         )
     }
