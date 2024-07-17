@@ -7,23 +7,26 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+protocol ColorSettingViewControllerDelegate: AnyObject {
+    func setBackGroundColor(_ color: UIColor)
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+final class MainViewController: UIViewController {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let colorSettingVC = segue.destination as? ColorSettingViewController else {
+            return
+        }
+        colorSettingVC.mainVCBackgroundColor = view.backgroundColor
+        colorSettingVC.delegate = self
     }
-    */
 
+}
+
+// MARK: - ColorSettingViewControllerDelegate
+extension MainViewController: ColorSettingViewControllerDelegate {
+    func setBackGroundColor(_ color: UIColor) {
+        view.backgroundColor = color
+    }
 }
