@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class ColorSettingViewController: UIViewController {
 
     @IBOutlet var colourView: UIView!
     
@@ -18,6 +18,8 @@ final class ViewController: UIViewController {
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
+    
+    var mainViewControllerColor: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
